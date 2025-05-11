@@ -6,7 +6,7 @@
     <title>About Me - Ashley Chan's Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Josefin+Sans:wght@400;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body> <header class="sticky top-0 z-50"> <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
@@ -41,73 +41,104 @@
     <main>
         <section id="about" class="section-padding fade-in-section">
             <div class="container mx-auto px-6 max-w-6xl">
-                <h1 class="text-4xl md:text-5xl font-bold mb-10 text-center font-heading">Hello World</h1>
+                <h1 class="text-4xl md:text-5xl font-bold mb-10 text-center font-heading">About Me</h1>
 
-                <div class="grid md:grid-cols-5 gap-10 items-start mb-16">
-                    <div class="md:col-span-2 flex justify-center md:pt-4">
-                        <img src="/images/about-picture.jpg" alt="Ashley Chan" class="rounded-xl shadow-2xl w-full max-w-xs md:max-w-sm object-cover border-4 border-howl-gold transform hover:scale-105 hover:shadow-[0_0_25px_rgba(241,196,15,0.5)] transition-all duration-300">
-                    </div>
-                    <div class="md:col-span-3">
-                        <h2 class="text-3xl font-heading mb-2 text-haku-teal">My name is Ashley Chan</h2>
+                <div class="mb-16">
+                    <img src="/images/about-picture.jpg" alt="Ashley Chan"
+                         class="rounded-xl shadow-2xl w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[300px] md:float-left mr-0 md:mr-8 mb-6 md:mb-4 border-4 border-howl-gold 
+                                transform hover:scale-105 hover:shadow-[0_0_25px_rgba(241,196,15,0.5)] transition-all duration-300">
+                    
+                    <div class="overflow-hidden"> 
+                        <h2 class="text-3xl mb-2 text-haku-teal">Ashley Chan</h2>
                         <p class="text-xl text-silver-haku mb-4 font-semibold">
-                            Computer Science Student at CSU Fullerton | Aspiring Software Engineer
+                            Computer Science Student | Aspiring Software Engineer
                         </p>
-                        <div class="custom-card p-6 mb-6">
-                            <h3 class="text-2xl font-heading text-howl-gold mb-3">About Me</h3>
-                            <p class="leading-relaxed text-light-slate whitespace-pre-line">
-                                Highly motivated Computer Science student at California State University, Fullerton, with a strong academic record (GPA: 3.53, Dean's List) and practical software engineering experience gained through multiple Google STEP internships. Passionate about developing impactful solutions and contributing to collaborative team environments. Eager to leverage skills in C++, Java, Python, Go, and more to tackle new challenges.
+                        <div class="custom-card p-6">
+                            <h3 class="text-2xl font-heading text-haku-teal mb-3">My Story</h3>
+                            <p class="story-text text-light-slate whitespace-pre-line">
+                                Born and raised in Tracy, CA, my path to engineering wasn't immediate, but it was certainly transformative. High school introduced me to the SEA (Space and Engineering Academy), an incredible program where a small group of us—just 40 from each class—dove deep into five advanced science and engineering courses. From the intricacies of 3D modeling and the structural challenges of building bridges, to the hands-on excitement of Arduinos, rockets, and robots, I was captivated. That experience, with all its diverse projects and additional graduation requirements, truly cemented my love for engineering.
+
+                                The pivotal moment came in AP Computer Science A. Suddenly, the logic, the problem-solving, the sheer creativity of CS clicked with me in a way nothing else had. It was a clear signal, and I decided then to focus my energy on Computer Science as I moved on to California State University, Fullerton.
+
+                                I'vealways believed in finding passion in whatever I do, and that extends beyond my technical pursuits. I have a genuine love for education, the power of music, and the beauty of art. My hope is to weave these threads into my work as a software engineer, creating solutions that are not only functional but also resonate with a touch of creativity and human connection. My experiences, including Google STEP internships, have further fueled this desire, and I'm eager to keep learning and contributing with skills in C++, Java, Python, Go, and more.
                             </p>
                         </div>
                     </div>
+                    <div class="clear-both"></div>
                 </div>
+                
+                <div class="mb-16">
+                    <h2 class="text-3xl font-heading mb-10 text-haku-teal text-center">Work Experience</h2>
+                    <div class="md:flex experience-tabs-container">
+                        <div class="md:w-1/4 lg:w-1/5 pr-0 md:pr-8 mb-8 md:mb-0">
+                            <ul id="experience-nav" class="space-y-2">
+                                <li><button class="experience-tab-button" data-target="exp-google-step1">Google 1st-Year STEP</button></li>
+                                <li><button class="experience-tab-button active-tab" data-target="exp-google-step2">Google 2nd-Year STEP</button></li>
+                                <li><button class="experience-tab-button" data-target="exp-csuf-si">CSUF SI Leader</button></li>
+                                <li><button class="experience-tab-button" data-target="exp-csuf-sr-si">CSUF Senior SI Leader</button></li>
+                            </ul>
+                        </div>
 
-                <div class="custom-card p-6 md:p-10 mb-16">
-                    <h2 class="text-3xl font-heading mb-6 text-haku-teal text-center">My Journey (Work Experience)</h2>
-                    <div class="space-y-8">
-                        <div>
-                            <h3 class="text-2xl font-heading text-howl-gold mb-1">Google Second-Year STEP Intern</h3>
-                            <p class="font-semibold text-silver-haku mb-1">Google | Mountain View | Go</p>
-                            <p class="text-sm text-light-slate opacity-80 mb-2">May 2024 - Present</p>
-                            <ul class="list-disc list-inside text-light-slate leading-relaxed space-y-1 pl-2 whitespace-pre-line">
-                                <li>Developed a microservice to aid teams across GWS in monitoring integration test workflows by leveraging protos, textprotos, Golang, internal API's and the use of other internal libraries.</li>
-                                <li>Collaborated with co-intern, hosts, and internal teams to share design concepts and gather insights.</li>
-                                <li>Developed project documentation, including design specifications and daily progress reports.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-heading text-howl-gold mb-1">Senior Supplemental Instruction (SI) Leader | C++</h3>
-                            <p class="font-semibold text-silver-haku mb-1">California State University at Fullerton</p> {/* Assuming this is at CSUF based on context */}
-                            <p class="text-sm text-light-slate opacity-80 mb-2">Jan 2024 - Present</p>
-                            <ul class="list-disc list-inside text-light-slate leading-relaxed space-y-1 pl-2 whitespace-pre-line">
-                                <li>Facilitated interactive and collaborative sessions to enhance students' comprehension of course material, resulting in a 10% average grade increase.</li>
-                                <li>Reinforced computer science fundamentals such as fundamental object oriented programming concepts and data structures.</li>
-                                <li>Conduct weekly meetings for 17+ other SI Leaders within the Computer Science department.</li>
-                                <li>Lead SI training for 100+ new and returning SI Leaders across 8 departments each semester.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-heading text-howl-gold mb-1">Google First-Year STEP Intern</h3>
-                            <p class="font-semibold text-silver-haku mb-1">Google | Mountain View | C++, SQL</p>
-                            <p class="text-sm text-light-slate opacity-80 mb-2">May 2023 - Aug 2023</p>
-                            <ul class="list-disc list-inside text-light-slate leading-relaxed space-y-1 pl-2 whitespace-pre-line">
-                                <li>Implemented two full C++ backend data processing pipelines for processing texts/image ads.</li>
-                                <li>Utilized internal libraries and distributed computation to efficiently query databases and generate ad embeddings, producing an advertiser asset dataset, enabling expedited experimentation and training for machine learning models.</li>
-                                <li>Ensured scalability by concurrently testing both pipelines, processing datasets ranging from 100 to 10,000 ads with processing times between 3 and 12 minutes per batch.</li>
-                                <li>Collaborated with pod and an internal team to communicate ideas and resolve conflicts.</li>
-                                <li>Documented forms of project details in a design doc along with daily individual progress.</li>
-                            </ul>
+                        <div id="experience-details-container" class="md:w-3/4 lg:w-4/5 md:pl-8"> 
+                            <div id="exp-google-step1" class="experience-detail-content custom-card p-6" style="display: none;">
+                                <h3 class="text-2xl text-haku-teal mb-1">Google First-Year STEP Intern</h3>
+                                <p class="font-semibold text-silver-haku mb-1">Google | Mountain View | C++, SQL</p>
+                                <p class="text-sm text-light-slate opacity-80 mb-3">May 2023 - Aug 2023</p>
+                                <ul class="list-disc list-inside text-light-slate text-sm pl-2 whitespace-pre-line">
+                                    <li>Implemented two full C++ backend data processing pipelines for processing texts/image ads.</li>
+                                    <li>Utilized internal libraries and distributed computation to efficiently query databases and generate ad embeddings, producing an advertiser asset dataset, enabling expedited experimentation and training for machine learning models.</li>
+                                    <li>Ensured scalability by concurrently testing both pipelines, processing datasets ranging from 100 to 10,000 ads with processing times between 3 and 12 minutes per batch.</li>
+                                    <li>Collaborated with pod and an internal team to communicate ideas and resolve conflicts.</li>
+                                    <li>Documented forms of project details in a design doc along with daily individual progress.</li>
+                                </ul>
+                            </div>
+
+                            <div id="exp-google-step2" class="experience-detail-content active-detail custom-card p-6">
+                                <h4 class="text-2xl text-haku-teal mb-1">Google Second-Year STEP Intern</h4>
+                                <p class="font-semibold text-silver-haku mb-1">Google | Mountain View | Go</p>
+                                <p class="text-sm text-light-slate opacity-80 mb-3">May 2024 - Present</p>
+                                <ul class="list-disc list-inside text-light-slate text-sm pl-2 whitespace-pre-line">
+                                    <li>Developed a microservice to aid teams across GWS in monitoring integration test workflows by leveraging protos, textprotos, Golang, internal API's and the use of other internal libraries.</li>
+                                    <li>Collaborated with co-intern, hosts, and internal teams to share design concepts and gather insights.</li>
+                                    <li>Developed project documentation, including design specifications and daily progress reports.</li>
+                                </ul>
+                            </div>
+
+                            <div id="exp-csuf-si" class="experience-detail-content custom-card p-6" style="display: none;">
+                                <h3 class="text-2xl text-haku-teal mb-1">Supplemental Instruction (SI) Leader | C++</h3>
+                                <p class="font-semibold text-silver-haku mb-1">California State University at Fullerton</p>
+                                <p class="text-sm text-light-slate opacity-80 mb-3">[Assumed Dates, e.g., Aug 2023 - Dec 2023 - Please Update]</p>
+                                <ul class="list-disc list-inside text-light-slate text-sm pl-2 whitespace-pre-line">
+                                    <li>Assisted students in understanding C++ concepts through group study sessions.</li>
+                                    <li>Helped prepare materials and facilitate learning activities.</li>
+                                    <li>[Add more specific details if available for this role]</li>
+                                </ul>
+                            </div>
+
+                            <div id="exp-csuf-sr-si" class="experience-detail-content custom-card p-6" style="display: none;">
+                                <h3 class="text-2xl text-haku-teal mb-1">Senior Supplemental Instruction (SI) Leader | C++</h3>
+                                <p class="font-semibold text-silver-haku mb-1">California State University at Fullerton</p>
+                                <p class="text-sm text-light-slate opacity-80 mb-3">Jan 2024 - Present</p>
+                                <ul class="list-disc list-inside text-light-slate text-sm pl-2 whitespace-pre-line">
+                                    <li>Facilitated interactive and collaborative sessions to enhance students' comprehension of course material, resulting in a 10% average grade increase.</li>
+                                    <li>Reinforced computer science fundamentals such as fundamental object oriented programming concepts and data structures.</li>
+                                    <li>Conduct weekly meetings for 17+ other SI Leaders within the Computer Science department.</li>
+                                    <li>Lead SI training for 100+ new and returning SI Leaders across 8 departments each semester.</li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
+                <h2 class="text-3xl font-heading mb-6 text-haku-teal text-center">Education</h2>
                 <div class="custom-card p-6 md:p-10 mb-16">
-                    <h2 class="text-3xl font-heading mb-6 text-haku-teal text-center">Scrolls of Knowledge (Education)</h2>
                     <div class="space-y-6">
                         <div>
-                            <h3 class="text-2xl font-heading text-howl-gold mb-1">California State University at Fullerton</h3>
-                            <p class="font-semibold text-silver-haku mb-1">B.S. Computer Science</p>
+                            <h3 class="text-2xl text-haku-teal mb-1">California State University at Fullerton</h3>
+                            <p class="font-semibold text-silver-haku mb-1">Bachelor's of Science in Computer Science</p>
                             <p class="text-sm text-light-slate opacity-80 mb-2">Aug 2022 - May 2026</p>
-                            <p class="leading-relaxed text-light-slate whitespace-pre-line">
+                            <p class="story-text text-light-slate whitespace-pre-line">
                                 <strong class="text-silver-haku">GPA:</strong> 3.53
                                 <br><strong class="text-silver-haku">Dean's List:</strong> Spring 2023, Fall 2022
                                 <br><strong class="text-silver-haku">Technical coursework:</strong> Algorithm Engineering, File Structures and Database Systems, Software Engineering, Computer Communications, Operating System Concepts, Intro to Cybersecurity, Computer Organization and Assembly, Intro to Python, Data Structures, Object-Oriented Programming.
@@ -116,36 +147,71 @@
                     </div>
                 </div>
 
-                <div class="custom-card p-6 md:p-10 mb-16">
-                    <h2 class="text-3xl font-heading mb-6 text-haku-teal text-center">Whispers of Leadership</h2>
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="text-2xl font-heading text-howl-gold mb-1">Artificial Intelligence Officer</h3>
-                            <p class="font-semibold text-silver-haku mb-1">Association of Computing Machinery (ACM) @ CSUF</p>
-                            <p class="text-sm text-light-slate opacity-80 mb-2">Aug 2023 - Dec 2023</p>
-                            <ul class="list-disc list-inside text-light-slate leading-relaxed space-y-1 pl-2 whitespace-pre-line">
-                                <li>Organized content and facilitated interactive workshops for students interested in AI.</li>
-                            </ul>
+                <div class="mb-16">
+                    <h2 class="text-3xl font-heading mb-8 text-haku-teal text-center">Leadership</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 card-container">
+                        <div class="interactive-card custom-card">
+                            <div class="card-inner">
+                                <div class="card-front p-6 flex flex-col justify-center items-center text-center">
+                                    <i class="fas fa-brain fa-3x text-howl-gold mb-3"></i>
+                                    <h3 class="text-2xl text-haku-teal mb-1">AI Officer</h3>
+                                    <p class="text-sm text-light-slate opacity-80">Aug 2023 - Dec 2023</p>
+                                </div>
+                                <div class="card-back p-6">
+                                    <h5 class="text-xl font-heading text-haku-teal mb-2">Association of Computing Machinery (ACM) @ CSUF</h5>
+                                    <ul class="list-disc list-inside text-light-slate text-sm pl-2 whitespace-pre-line">
+                                        <li>Organized content and facilitated interactive workshops for students interested in AI.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="interactive-card custom-card">
+                            <div class="card-inner">
+                                <div class="card-front p-6 flex flex-col justify-center items-center text-center">
+                                    <i class="fas fa-bullhorn fa-3x text-haku-teal mb-3"></i>
+                                    <h3 class="text-2xl text-haku-teal mb-1">Marketing Board Member</h3>
+                                    <p class="text-sm text-light-slate opacity-80">[May 2024 - May 2025]</p>
+                                </div>
+                                <div class="card-back p-6">
+                                    <h5 class="text-xl font-heading text-haku-teal mb-2">Association of Computing Machinery (ACM) @ CSUF</h5>
+                                    <ul class="list-disc list-inside text-light-slate text-sm pl-2 whitespace-pre-line">
+                                        <li>Managed the ACM CSUF Instagram page enhancing engagement and awareness of the club.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="interactive-card custom-card">
+                            <div class="card-inner">
+                                <div class="card-front p-6 flex flex-col justify-center items-center text-center">
+                                     <i class="fas fa-seedling fa-3x text-howl-gold mb-3"></i>
+                                    <h3 class="text-2xl text-haku-teal mb-1">Node Buds Board Member</h3>
+                                    <p class="text-sm text-light-slate opacity-80">[August 2024 - May 2025]</p>
+                                </div>
+                                <div class="card-back p-6">
+                                    <h5 class="text-xl font-heading text-haku-teal mb-2">Association of Computing Machinery (ACM) @ CSUF</h5>
+                                    <ul class="list-disc list-inside text-light-slate text-sm pl-2 whitespace-pre-line">
+                                        <li>Mentored "littles" in the program to develop their technical and communication skills.</li>
+                                        <li>Facilitated environments for littles to connect with other members of the club.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="text-center">
-                    <a href="/resume/ashleys-resume.pdf" target="_blank" class="btn btn-primary text-base">
-                        <i class="fas fa-scroll mr-2"></i>Download My Scroll (Resume)
+                    <a href="/resume/ashleys-resume.pdf" target="none" class="btn btn-primary text-base">
+                        <i class="fas fa-scroll mr-2"></i>Check out my Resume!
                     </a>
-                    <p class="text-sm mt-3 text-light-slate opacity-75">(This is a placeholder link. You'll need to add the actual resume PDF and update the path!)</p>
                 </div>
 
             </div>
         </section>
     </main>
 
-    <footer class="text-center">
-        <div class="container mx-auto px-6">
-            <p class="font-heading text-lg">&copy; <span id="currentYear"></span> Ashley Chan.</p>
-            <p class="text-sm mt-2">Made with ❤️ by Ashley.</p>
+    <footer class="text-center"> <div class="container mx-auto px-6">
+            <p class="font-heading text-lg">&copy; <span id="currentYear"></span> Ashley Chan. All rights reserved.</p>
+            <p class="text-sm mt-2">Crafted with a touch of magic <i class="fas fa-magic-wand-sparkles"></i> and spirit.</p>
         </div>
     </footer>
 

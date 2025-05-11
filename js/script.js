@@ -5,38 +5,30 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    // Select all links within the mobile menu specifically for closing it on click
     const mobileNavLinksForClose = document.querySelectorAll('#mobile-menu a.mobile-nav-link');
 
-    // Function to open the mobile menu
     function openMobileMenu() {
         if (mobileMenu) {
             mobileMenu.classList.remove('mobile-menu-closed');
             mobileMenu.classList.add('mobile-menu-open');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling of the page when menu is open
+            document.body.style.overflow = 'hidden';
         }
     }
 
-    // Function to close the mobile menu
     function closeMobileMenu() {
         if (mobileMenu) {
             mobileMenu.classList.remove('mobile-menu-open');
             mobileMenu.classList.add('mobile-menu-closed');
-            document.body.style.overflow = ''; // Restore scrolling of the page
+            document.body.style.overflow = '';
         }
     }
 
-    // Event listener for the mobile menu open button
     if (mobileMenuButton) {
         mobileMenuButton.addEventListener('click', openMobileMenu);
     }
-
-    // Event listener for the mobile menu close button
     if (mobileMenuCloseButton) {
         mobileMenuCloseButton.addEventListener('click', closeMobileMenu);
     }
-
-    // Event listeners for each link in the mobile menu to close it on click
     if (mobileNavLinksForClose) {
         mobileNavLinksForClose.forEach(link => {
             link.addEventListener('click', closeMobileMenu);
@@ -50,32 +42,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // --- Active Navigation Link Highlighting ---
-    // Select all navigation links (desktop and mobile)
     const desktopNavLinks = document.querySelectorAll('header nav > div.hidden a.nav-link');
-    const mobileNavLinks = document.querySelectorAll('#mobile-menu a.mobile-nav-link'); // Already selected above, but good for clarity
-    const allNavLinks = [...desktopNavLinks, ...mobileNavLinks]; // Combine node lists
-
+    const mobileNavLinksJS = document.querySelectorAll('#mobile-menu a.mobile-nav-link');
+    const allNavLinks = [...desktopNavLinks, ...mobileNavLinksJS];
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
     allNavLinks.forEach(link => {
         const linkFileName = link.getAttribute('href').split("/").pop();
         const linkPage = (linkFileName === "" || linkFileName === null) ? "index.html" : linkFileName;
-
-        // Remove any existing active classes first
-        link.classList.remove('nav-link-active');
+        link.classList.remove('nav-link-active', 'font-bold');
         if (link.classList.contains('mobile-nav-link')) {
-            link.classList.remove('font-bold'); // Specific to mobile active state
-            // Reset color if active styles were applied directly by JS (though CSS should handle this)
+            link.style.color = '';
         }
-
-        // Add active class if the link matches the current page
         if (linkPage === currentPage) {
             link.classList.add('nav-link-active');
             if (link.classList.contains('mobile-nav-link')) {
-                link.classList.add('font-bold'); // Add bold for active mobile link
-                // Active color for mobile links is handled by CSS:
-                // #mobile-menu a.mobile-nav-link.font-heading.font-bold
-                // or #mobile-menu a.mobile-nav-link.nav-link-active
+                link.classList.add('font-bold');
             }
         }
     });
@@ -86,30 +68,26 @@ document.addEventListener('DOMContentLoaded', function () {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Stop observing once the animation has triggered
+                observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.1 // Trigger when 10% of the section is visible
-    });
-
+    }, { threshold: 0.1 });
     sectionsToFade.forEach(section => {
         sectionObserver.observe(section);
     });
 
-    // --- Basic Contact Form Handling (Front-end only feedback) ---
-    const contactForm = document.getElementById('contactForm'); // Assuming your form has id="contactForm"
-    const formMessage = document.getElementById('formMessage'); // Assuming you have an element with id="formMessage" for feedback
+    // --- Contact Form Handling with Formspree AJAX ---
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
 
     if (contactForm && formMessage) {
         contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Basic validation (can be expanded)
-            const nameInput = contactForm.querySelector('#name'); // Ensure your inputs have these IDs
+            event.preventDefault();
+            const formData = new FormData(contactForm);
+            const formAction = contactForm.getAttribute('action');
+            const nameInput = contactForm.querySelector('#name');
             const emailInput = contactForm.querySelector('#email');
             const messageInput = contactForm.querySelector('#message');
-
             let isValid = true;
             let feedbackMessage = "";
 
@@ -126,22 +104,93 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!isValid) {
                 formMessage.textContent = feedbackMessage;
-                formMessage.className = 'mt-4 text-center error'; // Ensure 'error' class is styled in CSS
+                formMessage.className = 'mt-4 text-center error';
                 return;
             }
 
-            // Simulate form submission success
-            formMessage.textContent = "Thank you for your message! (This is a demo and not actually sent)";
-            formMessage.className = 'mt-4 text-center success'; // Ensure 'success' class is styled in CSS
-            contactForm.reset(); // Clear the form fields
+            formMessage.textContent = "Sending...";
+            formMessage.className = 'mt-4 text-center';
 
-            // IMPORTANT: To make this form actually send emails, you would need to:
-            // 1. Change the form's `action` attribute to a backend endpoint or a service like Formspree.
-            // 2. Change the form's `method` attribute to "POST".
-            // 3. Remove `event.preventDefault()` or handle the submission with `fetch()` as shown in previous examples.
-            // For example, using Formspree, you'd set up your form in HTML like:
-            // <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-            // And then you might not even need this JS part for submission, or you'd use fetch for AJAX submission.
+            fetch(formAction, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    formMessage.textContent = "Thank you! Your message has been sent.";
+                    formMessage.className = 'mt-4 text-center success';
+                    contactForm.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            formMessage.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            formMessage.textContent = "Oops! There was a problem sending your message.";
+                        }
+                        formMessage.className = 'mt-4 text-center error';
+                    }).catch(error => {
+                        formMessage.textContent = "Oops! There was a problem sending your message. (Error parsing response)";
+                        formMessage.className = 'mt-4 text-center error';
+                    });
+                }
+            }).catch(error => {
+                formMessage.textContent = "Oops! There was a problem sending your message. Please try again.";
+                formMessage.className = 'mt-4 text-center error';
+            });
+        });
+    }
+
+    // --- Interactive Card Rotation (for Leadership section) ---
+    const interactiveCards = document.querySelectorAll('.interactive-card'); // This will still apply to leadership cards
+    interactiveCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Only flip if it's not part of the new experience tabs
+            if (!this.closest('.experience-tabs-container')) {
+                 this.classList.toggle('is-flipped');
+            }
+        });
+    });
+
+    // --- Tabbed Work Experience Functionality ---
+    const experienceNavButtons = document.querySelectorAll('#experience-nav .experience-tab-button');
+    const experienceDetailContents = document.querySelectorAll('#experience-details-container .experience-detail-content');
+
+    if (experienceNavButtons.length > 0 && experienceDetailContents.length > 0) {
+        experienceNavButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active state from all buttons
+                experienceNavButtons.forEach(btn => btn.classList.remove('active-tab'));
+                // Add active state to clicked button
+                this.classList.add('active-tab');
+
+                const targetId = this.getAttribute('data-target');
+
+                // Hide all detail content
+                experienceDetailContents.forEach(content => {
+                    content.style.display = 'none'; // Hide by setting display to none
+                    content.classList.remove('active-detail'); // Remove active class if used for styling visibility
+                });
+
+                // Show target detail content
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.style.display = 'block'; // Show by setting display to block
+                    targetContent.classList.add('active-detail'); // Add active class
+                }
+            });
+        });
+
+        // Optional: Ensure the first tab is active on page load
+        if (experienceNavButtons[0]) {
+            experienceNavButtons[0].classList.add('active-tab');
+        }
+        experienceDetailContents.forEach((content, index) => {
+            if (index === 0) {
+                content.style.display = 'block';
+                content.classList.add('active-detail');
+            } else {
+                content.style.display = 'none';
+            }
         });
     }
 

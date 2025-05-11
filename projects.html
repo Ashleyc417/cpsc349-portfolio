@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - Ashley Chan's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Josefin+Sans:wght@400;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body> <header class="sticky top-0 z-50"> <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold transition-colors font-heading">Ashley Chan</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu-closed fixed inset-0 z-40 pt-16 md:hidden">
+            <div class="flex flex-col items-center space-y-8 mt-10">
+                <a href="index.html" class="mobile-nav-link font-heading">Home</a>
+                <a href="about.html" class="mobile-nav-link font-heading">About</a>
+                <a href="projects.html" class="mobile-nav-link font-heading">Projects</a>
+                <a href="skills.html" class="mobile-nav-link font-heading">Skills</a>
+                <a href="contact.html" class="mobile-nav-link font-heading">Contact</a>
+                 <button id="mobile-menu-close-button" class="mt-10 focus:outline-none">
+                    <i class="fas fa-times fa-2x"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="projects" class="section-padding fade-in-section">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-12 text-center font-heading">My Crafted Creations</h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+
+                    <div class="custom-card p-6 rounded-xl shadow-lg flex flex-col h-full">
+                        <img src="https://placehold.co/600x400/76D7C4/1A2B3C?text=Simplify+C%2B%2B" alt="Simplify C++ Project Thumbnail" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h2 class="text-2xl font-heading text-haku-teal mb-2">Simplify C++: Fully Hacks 2023</h2>
+                        <p class="text-sm text-silver-haku mb-1"><i class="fas fa-calendar-alt mr-1 text-howl-gold"></i> April 2023</p>
+                        
+                        <div class="text-light-slate text-sm space-y-3 flex-grow">
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Description:</h4>
+                                <p>Collaborated with 2 other team members during Fully Hacks 2023 to create a beginner-friendly website designed to help users learn the C++ programming language.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Technologies Used:</h4>
+                                <p>HTML, CSS, JavaScript, Git.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Key Outcomes & Skills Developed:</h4>
+                                <ul class="list-disc list-inside pl-2">
+                                    <li>Developed skills in front-end web development (HTML, CSS, JavaScript).</li>
+                                    <li>Gained experience in UI/UX design principles.</li>
+                                    <li>Practiced collaborative development using Git.</li>
+                                    <li>Successfully delivered a functional project within a hackathon timeframe.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Challenges Faced (Example):</h4>
+                                <p>[Example: Integrating interactive coding examples within the time constraints of the hackathon.]</p>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-4">
+                             <a href="#" class="btn btn-secondary text-sm w-full text-center block">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Details / Live Demo
+                            </a>
+                            </div>
+                    </div>
+                    <div class="custom-card p-6 rounded-xl shadow-lg flex flex-col h-full">
+                        <img src="https://placehold.co/600x400/F1C40F/1A2B3C?text=Project+No.+2" alt="Project Two Thumbnail" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h2 class="text-2xl font-heading text-haku-teal mb-2">[Project Title 2]</h2>
+                        <p class="text-sm text-silver-haku mb-1"><i class="fas fa-calendar-alt mr-1 text-howl-gold"></i> [Date/Duration]</p>
+                        <div class="text-light-slate text-sm space-y-3 flex-grow">
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Description:</h4>
+                                <p>[A brief description of your second project. What was its purpose? What problem did it solve or what did it create?]</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Technologies Used:</h4>
+                                <p>[List key technologies, languages, frameworks, or tools.]</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Key Outcomes & Skills Developed:</h4>
+                                <ul class="list-disc list-inside pl-2">
+                                    <li>[Outcome/Skill 1]</li>
+                                    <li>[Outcome/Skill 2]</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Challenges Faced:</h4>
+                                <p>[Briefly mention a challenge and how it was overcome.]</p>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="#" class="btn btn-secondary text-sm w-full text-center block">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="custom-card p-6 rounded-xl shadow-lg flex flex-col h-full">
+                        <img src="https://placehold.co/600x400/A8B2D1/1A2B3C?text=Project+No.+3" alt="Project Three Thumbnail" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h2 class="text-2xl font-heading text-haku-teal mb-2">[Project Title 3]</h2>
+                        <p class="text-sm text-silver-haku mb-1"><i class="fas fa-calendar-alt mr-1 text-howl-gold"></i> [Date/Duration]</p>
+                        <div class="text-light-slate text-sm space-y-3 flex-grow">
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Description:</h4>
+                                <p>[A brief description of your third project. What was its purpose? What problem did it solve or what did it create?]</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Technologies Used:</h4>
+                                <p>[List key technologies, languages, frameworks, or tools.]</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Key Outcomes & Skills Developed:</h4>
+                                <ul class="list-disc list-inside pl-2">
+                                    <li>[Outcome/Skill 1]</li>
+                                    <li>[Outcome/Skill 2]</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-howl-gold mb-1">Challenges Faced:</h4>
+                                <p>[Briefly mention a challenge and how it was overcome.]</p>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="#" class="btn btn-secondary text-sm w-full text-center block">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Details
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center"> <div class="container mx-auto px-6">
+            <p class="font-heading text-lg">&copy; <span id="currentYear"></span> Ashley Chan. All rights reserved.</p>
+            <p class="text-sm mt-2">Crafted with a touch of magic <i class="fas fa-magic-wand-sparkles"></i> and spirit.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
