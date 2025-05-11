@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashley Chan - Portfolio Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body> <header class="sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold transition-colors font-heading">Ashley Chan</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu-closed fixed inset-0 z-40 pt-16 md:hidden">
+            <div class="flex flex-col items-center space-y-8 mt-10">
+                <a href="index.html" class="mobile-nav-link font-heading">Home</a>
+                <a href="about.html" class="mobile-nav-link font-heading">About</a>
+                <a href="projects.html" class="mobile-nav-link font-heading">Projects</a>
+                <a href="skills.html" class="mobile-nav-link font-heading">Skills</a>
+                <a href="contact.html" class="mobile-nav-link font-heading">Contact</a>
+                 <button id="mobile-menu-close-button" class="mt-10 focus:outline-none">
+                    <i class="fas fa-times fa-2x"></i> </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="min-h-[calc(100vh-72px)] flex items-center justify-center hero-bg-haku-howl section-padding fade-in-section">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <img src="/images/index-picture.jpeg" alt="Your Name - Avatar" class="w-40 md:w-60 aspect-square object-cover mx-auto rounded-full shadow-2xl mb-8 border-4 border-howl-gold transform hover:scale-110 hover:shadow-[0_0_30px_rgba(249,219,126,0.7)] transition-all duration-300">
+
+                <h1 class="text-4xl md:text-5xl font-bold mb-10 text-center font-heading">Hi, I'm Ashley!</h1>
+                <h2 class="text-3 text-3xl">Incoming Google SWE Intern</h2>
+                <br/>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-light-slate leading-relaxed">
+                    Feel free to browse around and learn more about me,
+                </p>
+                 <!-- Button -->
+                <div class="space-y-5 sm:space-y-0 sm:space-x-6"></div>
+                    <a href="/about.html" class="btn btn-primary text-base">Check out my CS Journey!</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center">
+        <div class="container mx-auto px-6">
+            <p class="font-heading text-lg">&copy; <span id="currentYear"></span> Ashley Chan.</p>
+            <p class="text-sm mt-2">Made with ❤️ by Ashley.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+    

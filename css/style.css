@@ -1,0 +1,288 @@
+/* Base Styles - Blueish Ghibli-Inspired Theme */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #E6F0FA; /* Very Light Soft Blue */
+    color: #334155; /* Dark Slate Gray for main text (like Tailwind slate-700) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* === FONT STYLES === */
+.font-heading, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bagel Fat One', cursive;
+    color: #E9859A; /* Soft Rose Pink - Default for headings */
+    font-weight: 400; /* Bagel Fat One is already bold */
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+/* subheading color (gold yellow) */
+.font-subheading, h2, h3, h4, h5, h6 {
+    color : #5F7A9D; /* Soft Sunflower Yellow */
+    font-weight: 700; /* Bold for subheadings */
+    font-size: 1.5rem; /* Adjust size as needed */
+}
+
+/* Main H1 in hero has gradient text via Tailwind in HTML */
+/* Tagline uses pink highlight via Tailwind in HTML */
+
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: #D1E0EE; /* Slightly darker than body blue */
+}
+::-webkit-scrollbar-thumb {
+    background: #F9DB7E; /* Soft Sunflower Yellow */
+    border-radius: 20px;
+    border: 3px solid #E6F0FA; /* Match body background */
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #f7ce68; /* Darker Sunflower Yellow */
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* === HEADER & NAVIGATION === */
+header {
+    background-color: #5F7A9D; /* Medium Muted Blue */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(230, 240, 250, 0.2); /* Lighter blue border, subtle */
+}
+/* Logo text ("Your Name") uses .font-heading (Bagel Fat One) */
+header a.font-heading {
+    color: #FDF6E3; /* Pale Parchment/Off-white for logo text */
+    text-shadow: 0 0 8px rgba(47, 79, 79, 0.3); /* Subtle dark slate shadow */
+    font-size: 2.25rem;
+}
+header a.font-heading:hover {
+    color: #F9DB7E; /* Soft Sunflower Yellow on hover */
+}
+/* Navigation links (Home, About, etc.) */
+.nav-link {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700; /* Bold Nunito */
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    color: #E6F0FA; /* Very Light Soft Blue for links */
+    position: relative;
+    padding: 8px 6px;
+}
+.nav-link:hover {
+    color: #E9859A; /* Soft Rose Pink on hover */
+    text-shadow: 0 0 8px rgba(233, 133, 154, 0.4); /* Pink shadow */
+    transform: translateY(-2px);
+}
+.nav-link-active {
+    color: #E9859A; /* Soft Rose Pink for active link */
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(233, 133, 154, 0.5);
+}
+.nav-link-active::after {
+    content: ''; /* Removed flower icon */
+    position: absolute;
+    bottom: 0px; /* Position underline closer */
+    left: 0;
+    width: 100%;
+    height: 2px; /* Thickness of underline */
+    background-color: #E9859A; /* Soft Rose Pink underline */
+    opacity: 0;
+    animation: fadeInStar 0.3s forwards 0.1s; /* Reusing animation name, effect is fade in */
+}
+@keyframes fadeInStar { to { opacity: 1; } } /* Simple fade in for underline */
+
+/* === MOBILE MENU === */
+#mobile-menu-button {
+    color: #E6F0FA; /* Very Light Soft Blue for hamburger icon */
+}
+#mobile-menu-button:hover {
+    color: #E9859A; /* Soft Rose Pink on hover */
+}
+#mobile-menu {
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease-in-out;
+    opacity: 0;
+    background-color: rgba(230, 240, 250, 0.97); /* Very Light Soft Blue, slightly transparent */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.mobile-menu-open {
+    transform: translateX(0%);
+    opacity: 1;
+}
+.mobile-menu-closed {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+/* Mobile menu links use .font-heading (Bagel Fat One) */
+#mobile-menu a.mobile-nav-link.font-heading {
+    color: #5F7A9D; /* Medium Muted Blue for mobile links (contrast on light menu bg) */
+    font-size: 1.8rem;
+    line-height: 1.3;
+}
+#mobile-menu a.mobile-nav-link.font-heading:hover {
+    color: #E9859A; /* Soft Rose Pink on hover */
+}
+#mobile-menu a.mobile-nav-link.font-heading.font-bold { /* Active mobile link */
+     color: #E9859A; /* Soft Rose Pink */
+}
+#mobile-menu-close-button {
+    color: #5F7A9D; /* Medium Muted Blue */
+}
+#mobile-menu-close-button:hover {
+    color: #E9859A; /* Soft Rose Pink */
+}
+
+/* === GENERAL PAGE SECTIONS === */
+.section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.9s cubic-bezier(0.33, 1, 0.68, 1), transform 0.9s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === HERO SECTION === */
+.hero-bg-blue-theme { /* Renamed from .hero-bg-flower-field */
+    background-color: #C9D9E9; /* Slightly Deeper Soft Blue solid color for hero */
+    position: relative;
+    overflow: hidden;
+}
+/* Avatar border color defined in HTML with Tailwind: border-pink-highlight */
+/* Hero heading gradient and tagline color defined in HTML with Tailwind */
+
+/* === CARD STYLES (for Projects, About, Skills pages) === */
+/* This .custom-card style will apply to the contact form container */
+.custom-card {
+    background-color: #F5EFE0; /* Soft Tan/Beige background */
+    border: 2px solid #D2B48C; /* Slightly darker tan/light brown border */
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Neutral soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #334155; /* Dark Slate Gray text for cards - good contrast on tan */
+}
+.custom-card:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Slightly more pronounced neutral shadow */
+}
+/* Card titles use .font-heading (Bagel Fat One) */
+.custom-card h2.font-heading, .custom-card h3.font-heading {
+    color: #E9859A; /* Soft Rose Pink for card titles */
+    font-size: 1.75rem;
+    line-height: 1.2;
+}
+/* Specific styling for form elements within the contact card */
+.custom-card form input[type="text"],
+.custom-card form input[type="email"],
+.custom-card form textarea {
+    background-color: #FFFFFF; /* White background for form fields */
+    border-color: #D1E0EE; /* Light blue border for form fields */
+    color: #334155; /* Dark slate text for input */
+}
+.custom-card form input[type="text"]:focus,
+.custom-card form input[type="email"]:focus,
+.custom-card form textarea:focus {
+    border-color: #E9859A; /* Pink border on focus */
+    box-shadow: 0 0 0 0.2rem rgba(233, 133, 154, 0.25); /* Pink glow on focus */
+}
+.custom-card form label {
+    color: #5F7A9D; /* Medium Muted Blue for form labels */
+}
+
+
+/* === BUTTONS === */
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800; /* Extra bold Nunito */
+    padding: 0.8rem 2.2rem;
+    border-radius: 50px; /* Pill shape */
+    transition: all 0.3s ease;
+    letter-spacing: 0.8px;
+    display: inline-block;
+    border: 2px solid transparent;
+    text-transform: capitalize;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.btn-primary { /* Pink Button */
+    background-color: #E9859A; /* Soft Rose Pink */
+    color: #FFFFFF; /* White text */
+    border-color: #e06c85; /* Slightly darker pink border */
+}
+.btn-primary:hover {
+    background-color: #e06c85; /* Darker Rose Pink */
+    border-color: #d15a73;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(233, 133, 154, 0.4);
+}
+.btn-secondary { /* Yellow Button */
+    background-color: #F9DB7E; /* Soft Sunflower Yellow */
+    color: #5F7A9D; /* Medium Muted Blue text for contrast */
+    border-color: #f7ce68; /* Slightly darker yellow border */
+}
+.btn-secondary:hover {
+    background-color: #f7ce68; /* Darker Sunflower Yellow */
+    border-color: #f5c34f;
+    color: #4A6482; /* Darker blue for text */
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(249, 219, 126, 0.4);
+}
+
+/* === FOOTER === */
+footer {
+    background-color: #5F7A9D; /* Medium Muted Blue */
+    color: #E6F0FA; /* Very Light Soft Blue text */
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-top: 1px solid rgba(230, 240, 250, 0.3); /* Lighter blue border, subtle */
+}
+/* Footer heading ("Your Name") uses .font-heading (Bagel Fat One) */
+footer .font-heading {
+    color: #E6F0FA; /* Very Light Soft Blue for footer heading */
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+footer .fa-star { /* Changed icon to star */
+    color: #F9DB7E !important; /* Soft Sunflower Yellow */
+    text-shadow: 0 0 5px rgba(249, 219, 126, 0.7);
+}
+.ghibli-footer-image { /* If you add a small image here */
+    width: 60px;
+    height: auto;
+    opacity: 0.8;
+    margin: 1rem auto 0;
+}
+
+/* === UTILITY TEXT COLORS (used with Tailwind in HTML) === */
+.text-main-text { color: #334155; } /* Dark Slate Gray */
+.text-pink-highlight { color: #E9859A; } /* For tagline, avatar border */
+.text-yellow-accent { color: #F9DB7E; } /* For hero gradient */
+.text-green-accent-light { color: #A5D6A7; } /* For hero gradient (can be replaced with a blue) */
+/* New utility for blueish hero gradient if needed */
+.text-blue-accent-light { color: #A8CCEE; }
+
+
+/* Contact Form Message Placeholder */
+#formMessage {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+#formMessage.success {
+    color: #5F7A9D; /* Medium Muted Blue for success */
+}
+#formMessage.error {
+    color: #c53030; /* Red for error */
+}

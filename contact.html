@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Ashley Chan's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body> <header class="sticky top-0 z-50"> <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold transition-colors font-heading">Ashley Chan</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu-closed fixed inset-0 z-40 pt-16 md:hidden">
+            <div class="flex flex-col items-center space-y-8 mt-10">
+                <a href="index.html" class="mobile-nav-link font-heading">Home</a>
+                <a href="about.html" class="mobile-nav-link font-heading">About</a>
+                <a href="projects.html" class="mobile-nav-link font-heading">Projects</a>
+                <a href="skills.html" class="mobile-nav-link font-heading">Skills</a>
+                <a href="contact.html" class="mobile-nav-link font-heading">Contact</a>
+                 <button id="mobile-menu-close-button" class="mt-10 focus:outline-none">
+                    <i class="fas fa-times fa-2x"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="contact" class="section-padding fade-in-section">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center font-heading">Let's Connect!</h1>
+                <p class="text-center text-lg mb-12 max-w-xl mx-auto leading-relaxed text-main-text">
+                    Have a project in mind, a question, or just want to say hello? <br/> Feel free to fill out the stuff below! haha... see what I did there ;)
+                </p>
+
+                <div class="custom-card max-w-2xl mx-auto p-6 md:p-10 rounded-xl shadow-lg">
+                    <form id="contactForm">
+                        <div class="mb-6">
+                            <label for="name" class="block font-heading text-lg mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none transition-colors"
+                                   placeholder="e.g., Totoro">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="email" class="block font-heading text-lg mb-2">Your Email</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none transition-colors"
+                                   placeholder="e.g., friend@forest.com">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subject" class="block font-heading text-lg mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject"
+                                   class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none transition-colors"
+                                   placeholder="e.g., You're My Neighbor!">
+                        </div>
+
+                        <div class="mb-8">
+                            <label for="message" class="block font-heading text-lg mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                      class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none transition-colors resize-none"
+                                      placeholder="Hi, my name is Totoro and I'd love to connect!"></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary text-lg">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </div>
+                        <div id="formMessage" class="mt-4 text-center"></div> </form>
+                </div>
+
+                <div class="text-center mt-16">
+                    <h2 class="text-2xl md:text-3xl font-heading mb-6 text-pink-highlight">Other ways to Connect!</h2>
+                    <div class="flex justify-center space-x-6">
+                        <!-- Github -->
+                        <a href="https://github.com/Ashleyc417" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"
+                           class="hover:text-pink-highlight transition-colors text-4xl transform hover:scale-110">
+                            <i class="fab fa-github-square"></i>
+                        </a>
+                        <!-- Instagram -->
+                         <a href="https://www.instagram.com/ashleychan_/" target="_blank" rel="noopener noreferrer" aria-label="instagram Profile"
+                           class="hover:text-pink-highlight transition-colors text-4xl transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/ashley-chan12" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
+                           class="hover:text-pink-highlight transition-colors text-4xl transform hover:scale-110">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        </div>
+                     <p class="text-sm mt-4 text-main-text opacity-75">
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center"> <div class="container mx-auto px-6">
+            <p class="font-heading text-lg">&copy; <span id="currentYear"></span> Ashley Chan. All rights reserved.</p>
+            <p class="text-sm mt-2">Crafted with joy <i class="fas fa-star"></i> and a bit of Ghibli whimsy.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
