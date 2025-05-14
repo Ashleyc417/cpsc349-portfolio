@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to open the mobile menu
     function openMobileMenu() {
         if (mobileMenu) {
-            mobileMenu.classList.remove('mobile-menu-closed'); // Class that hides the menu
+            console.log("Opening mobile menu");
+            if (mobileMenu.classList.contains('mobile-menu-closed')) {
+                mobileMenu.classList.remove('mobile-menu-closed'); // Remove the closed class if it exists
+            }
             mobileMenu.classList.add('mobile-menu-open');   // Class that shows the menu
             document.body.style.overflow = 'hidden'; // Prevent scrolling of the page when menu is open
         }
@@ -19,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to close the mobile menu
     function closeMobileMenu() {
         if (mobileMenu) {
+            console.log("Closing mobile menu");
             mobileMenu.classList.remove('mobile-menu-open');
             mobileMenu.classList.add('mobile-menu-closed');
             document.body.style.overflow = ''; // Restore scrolling of the page
@@ -27,11 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Event listener for the mobile menu open button (hamburger)
     if (mobileMenuButton) {
+        console.log("Attached mobile menu open button");
         mobileMenuButton.addEventListener('click', openMobileMenu);
     }
 
     // Event listener for the mobile menu close button (the 'X')
     if (mobileMenuCloseButton) {
+        console.log("Attached mobile menu close button");
         mobileMenuCloseButton.addEventListener('click', closeMobileMenu);
     }
 
