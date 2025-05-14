@@ -1,8 +1,8 @@
-/* Base Styles - Blueish Ghibli-Inspired Theme */
+/* Base Styles - Blueish Theme with Pink/Yellow/Teal Accents */
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: #E6F0FA; /* Very Light Soft Blue */
-    color: #334155; /* Dark Slate Gray for main text (like Tailwind slate-700) */
+    background-color: #1A2B3C; /* Deep Mystical Blue for main page background */
+    color: #F0F4F8; /* Light Off-White for general text */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -11,278 +11,288 @@ body {
 /* === FONT STYLES === */
 .font-heading, h1, h2, h3, h4, h5, h6 {
     font-family: 'Bagel Fat One', cursive;
-    color: #E9859A; /* Soft Rose Pink - Default for headings */
-    font-weight: 400; /* Bagel Fat One is already bold */
+    color: #E9859A; /* Accent Pink - Default for general headings */
+    font-weight: 400;
     letter-spacing: 0.5px;
-    line-height: 1;
+    line-height: 1.2;
 }
 
-/* subheading color (gold yellow) */
-.font-subheading, h2, h3, h4, h5, h6 {
-    color : #5F7A9D; /* Soft Sunflower Yellow */
-    font-weight: 700; /* Bold for subheadings */
-    font-size: 1.5rem; /* Adjust size as needed */
-}
+/* Main page title (H1 on hero) color is set by Tailwind gradient in HTML */
 
-/* Main H1 in hero has gradient text via Tailwind in HTML */
-/* Tagline uses pink highlight via Tailwind in HTML */
+/* Smaller text for specific story/description paragraphs */
+.story-text, 
+.custom-card p.leading-relaxed, 
+.card-back p, 
+.experience-detail-content p, 
+.project-card-description p {
+    font-size: 0.875rem; 
+    line-height: 1.65;
+    color: #D0E0F0; /* Lighter text for descriptions on dark cards */
+}
+.card-back ul li,
+.experience-detail-content ul li,
+.project-card-details ul li {
+    font-size: 0.8rem; 
+    line-height: 1.4;
+    margin-bottom: 0.25rem; 
+    color: #D0E0F0;
+}
+.card-back ul,
+.experience-detail-content ul,
+.project-card-details ul {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * var(--tw-space-y-reverse)); 
+    margin-bottom: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+}
+.card-back ul > :not([hidden]) ~ :not([hidden]),
+.experience-detail-content ul > :not([hidden]) ~ :not([hidden]),
+.project-card-details ul > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * var(--tw-space-y-reverse)); 
+    margin-bottom: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+}
 
 
 /* === SCROLLBAR === */
-::-webkit-scrollbar {
-    width: 12px;
-}
-::-webkit-scrollbar-track {
-    background: #D1E0EE; /* Slightly darker than body blue */
-}
-::-webkit-scrollbar-thumb {
-    background: #F9DB7E; /* Soft Sunflower Yellow */
-    border-radius: 20px;
-    border: 3px solid #E6F0FA; /* Match body background */
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #f7ce68; /* Darker Sunflower Yellow */
-}
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #2C3E50; } 
+::-webkit-scrollbar-thumb { background: #76D7C4; border-radius: 20px; border: 3px solid #1A2B3C; } /* Teal thumb */
+::-webkit-scrollbar-thumb:hover { background: #48d1cc; } /* Darker Teal */
 
 /* Smooth scroll behavior */
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 /* === HEADER & NAVIGATION === */
 header {
-    background-color: #5F7A9D; /* Medium Muted Blue */
+    background-color: #0F172A; /* Very Dark Slate Blue - Darker than body */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(230, 240, 250, 0.2); /* Lighter blue border, subtle */
+    border-bottom: 1px solid rgba(120, 120, 120, 0.2); /* Neutral subtle border */
 }
-/* Logo text ("Your Name") uses .font-heading (Bagel Fat One) */
+/* Logo text ("Ashley Chan") uses .font-heading (Bagel Fat One) */
 header a.font-heading {
-    color: #FDF6E3; /* Pale Parchment/Off-white for logo text */
-    text-shadow: 0 0 8px rgba(47, 79, 79, 0.3); /* Subtle dark slate shadow */
+    color: #F9DB7E; /* Accent Yellow for logo text - UPDATED */
+    text-shadow: 0 0 8px rgba(42, 59, 77, 0.2); 
     font-size: 2.25rem;
 }
 header a.font-heading:hover {
-    color: #F9DB7E; /* Soft Sunflower Yellow on hover */
+    color: #f7ce68; /* Darker Accent Yellow on hover - UPDATED */
+    text-shadow: 0 0 12px rgba(249, 219, 126, 0.5); /* Yellow glow */
 }
 /* Navigation links (Home, About, etc.) */
 .nav-link {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700; /* Bold Nunito */
-    letter-spacing: 0.5px;
+    font-family: 'Nunito', sans-serif; font-weight: 700; letter-spacing: 0.5px;
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-    color: #E6F0FA; /* Very Light Soft Blue for links */
-    position: relative;
-    padding: 8px 6px;
+    color: #D0E0F0; /* Light Blue/Silver for links */
+    position: relative; padding: 8px 6px;
 }
 .nav-link:hover {
-    color: #E9859A; /* Soft Rose Pink on hover */
-    text-shadow: 0 0 8px rgba(233, 133, 154, 0.4); /* Pink shadow */
+    color: #76D7C4; /* Accent Teal on hover */
+    text-shadow: 0 0 8px rgba(118, 215, 196, 0.4); 
     transform: translateY(-2px);
 }
 .nav-link-active {
-    color: #E9859A; /* Soft Rose Pink for active link */
+    color: #76D7C4; /* Accent Teal for active link text */
     font-weight: 700;
-    text-shadow: 0 0 8px rgba(233, 133, 154, 0.5);
+    text-shadow: 0 0 10px rgba(118, 215, 196, 0.6);
 }
-.nav-link-active::after {
-    content: ''; /* Removed flower icon */
+.nav-link-active::after { /* Underline for active link */
+    content: ''; 
     position: absolute;
-    bottom: 0px; /* Position underline closer */
-    left: 0;
-    width: 100%;
-    height: 2px; /* Thickness of underline */
-    background-color: #E9859A; /* Soft Rose Pink underline */
+    bottom: -4px; 
+    left: 10%; 
+    width: 80%; 
+    height: 2px; 
+    background-color: #76D7C4; /* Accent Teal underline */
     opacity: 0;
-    animation: fadeInStar 0.3s forwards 0.1s; /* Reusing animation name, effect is fade in */
+    animation: fadeInUnderline 0.3s forwards 0.1s;
 }
-@keyframes fadeInStar { to { opacity: 1; } } /* Simple fade in for underline */
+@keyframes fadeInUnderline { to { opacity: 1; } }
 
 /* === MOBILE MENU === */
-#mobile-menu-button {
-    color: #E6F0FA; /* Very Light Soft Blue for hamburger icon */
-}
-#mobile-menu-button:hover {
-    color: #E9859A; /* Soft Rose Pink on hover */
-}
+#mobile-menu-button { color: #D0E0F0; }
+#mobile-menu-button:hover { color: #76D7C4; } /* Teal hover */
 #mobile-menu {
     transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease-in-out;
-    opacity: 0;
-    background-color: rgba(230, 240, 250, 0.97); /* Very Light Soft Blue, slightly transparent */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    opacity: 0; background-color: rgba(15, 23, 42, 0.97); /* Very Dark Slate Blue, matches header */
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
-.mobile-menu-open {
-    transform: translateX(0%);
-    opacity: 1;
-}
-.mobile-menu-closed {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-/* Mobile menu links use .font-heading (Bagel Fat One) */
-#mobile-menu a.mobile-nav-link.font-heading {
-    color: #5F7A9D; /* Medium Muted Blue for mobile links (contrast on light menu bg) */
-    font-size: 1.8rem;
-    line-height: 1.3;
-}
-#mobile-menu a.mobile-nav-link.font-heading:hover {
-    color: #E9859A; /* Soft Rose Pink on hover */
-}
-#mobile-menu a.mobile-nav-link.font-heading.font-bold { /* Active mobile link */
-     color: #E9859A; /* Soft Rose Pink */
-}
-#mobile-menu-close-button {
-    color: #5F7A9D; /* Medium Muted Blue */
-}
-#mobile-menu-close-button:hover {
-    color: #E9859A; /* Soft Rose Pink */
-}
+.mobile-menu-open { transform: translateX(0%); opacity: 1; }
+.mobile-menu-closed { transform: translateX(-100%); opacity: 0; }
+#mobile-menu a.mobile-nav-link.font-heading { color: #D0E0F0; font-size: 1.8rem; line-height: 1.3; }
+#mobile-menu a.mobile-nav-link.font-heading:hover { color: #76D7C4; } /* Teal hover */
+#mobile-menu a.mobile-nav-link.font-heading.font-bold { color: #76D7C4; } /* Teal active */
+#mobile-menu-close-button { color: #D0E0F0; }
+#mobile-menu-close-button:hover { color: #76D7C4; } /* Teal hover */
 
 /* === GENERAL PAGE SECTIONS === */
-.section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-}
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.9s cubic-bezier(0.33, 1, 0.68, 1), transform 0.9s cubic-bezier(0.33, 1, 0.68, 1);
-}
-.fade-in-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+.fade-in-section { opacity: 0; transform: translateY(25px); transition: opacity 0.9s cubic-bezier(0.33, 1, 0.68, 1), transform 0.9s cubic-bezier(0.33, 1, 0.68, 1); }
+.fade-in-section.visible { opacity: 1; transform: translateY(0); }
 
 /* === HERO SECTION === */
-.hero-bg-blue-theme { /* Renamed from .hero-bg-flower-field */
-    background-color: #C9D9E9; /* Slightly Deeper Soft Blue solid color for hero */
-    position: relative;
-    overflow: hidden;
+.hero-bg-blue-theme { 
+    background-color: #1A2B3C; /* Body background color */
+    position: relative; overflow: hidden;
 }
-/* Avatar border color defined in HTML with Tailwind: border-pink-highlight */
-/* Hero heading gradient and tagline color defined in HTML with Tailwind */
+.hero-bg-blue-theme::before { /* Starfield overlay with pink, yellow, and teal stars */
+    content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, #F0F4F8, transparent),
+        radial-gradient(1.5px 1.5px at 30% 80%, #F9DB7E, transparent), /* Accent Yellow star */
+        radial-gradient(1px 1px at 50% 50%, #F0F4F8, transparent),
+        radial-gradient(1.5px 1.5px at 70% 30%, #76D7C4, transparent), /* Accent Teal star */
+        radial-gradient(1px 1px at 90% 70%, #E9859A, transparent); /* Accent Pink star */
+    background-size: 100% 100%; opacity: 0.4; animation: twinkle 15s infinite linear; pointer-events: none;
+}
+@keyframes twinkle { 0% { opacity: 0.2; } 50% { opacity: 0.5; } 100% { opacity: 0.2; } }
 
-/* === CARD STYLES (for Projects, About, Skills pages) === */
-/* This .custom-card style will apply to the contact form container */
+/* === CARD STYLES (General & Non-Interactive like Education, "My Story" box) === */
 .custom-card {
-    background-color: #F5EFE0; /* Soft Tan/Beige background */
-    border: 2px solid #D2B48C; /* Slightly darker tan/light brown border */
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Neutral soft shadow */
+    background-color: rgba(42, 59, 77, 0.7); /* Darker blue, semi-transparent */
+    border: 1px solid rgba(118, 215, 196, 0.3); /* Teal border for cards */
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(118, 215, 196, 0.1) inset; /* Teal inner glow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #334155; /* Dark Slate Gray text for cards - good contrast on tan */
+    color: #D0E0F0; /* Light text for cards */
 }
 .custom-card:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Slightly more pronounced neutral shadow */
+    transform: translateY(-6px); 
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(118, 215, 196, 0.15) inset; /* Teal inner glow */
 }
-/* Card titles use .font-heading (Bagel Fat One) */
-.custom-card h2.font-heading, .custom-card h3.font-heading {
-    color: #E9859A; /* Soft Rose Pink for card titles */
-    font-size: 1.75rem;
-    line-height: 1.2;
+
+/* === INTERACTIVE ROTATING CARD STYLES (Leadership Section) === */
+.card-container { display: grid; }
+.interactive-card {
+    background-color: transparent; width: 100%; min-height: 250px;
+    perspective: 1000px; cursor: pointer; border: none; box-shadow: none;
 }
-/* Specific styling for form elements within the contact card */
-.custom-card form input[type="text"],
-.custom-card form input[type="email"],
-.custom-card form textarea {
-    background-color: #FFFFFF; /* White background for form fields */
-    border-color: #D1E0EE; /* Light blue border for form fields */
-    color: #334155; /* Dark slate text for input */
+.interactive-card:hover { transform: none; box-shadow: none; }
+.card-inner {
+    position: relative; width: 100%; height: 100%; text-align: left;
+    transition: transform 0.7s; transform-style: preserve-3d; border-radius: 12px;
+    background-color: rgba(42, 59, 77, 0.7); 
+    border: 1px solid rgba(118, 215, 196, 0.3); /* Teal border */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(118, 215, 196, 0.1) inset; 
 }
-.custom-card form input[type="text"]:focus,
-.custom-card form input[type="email"]:focus,
-.custom-card form textarea:focus {
-    border-color: #E9859A; /* Pink border on focus */
-    box-shadow: 0 0 0 0.2rem rgba(233, 133, 154, 0.25); /* Pink glow on focus */
+.interactive-card.is-flipped .card-inner { transform: rotateY(180deg); }
+.card-front, .card-back {
+    position: absolute; width: 100%; height: 100%;
+    -webkit-backface-visibility: hidden; backface-visibility: hidden;
+    border-radius: 12px; overflow-y: auto; padding: 1.5rem;
 }
-.custom-card form label {
-    color: #5F7A9D; /* Medium Muted Blue for form labels */
+.card-front {
+    color: #D0E0F0; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
 }
+.card-front h3.font-heading { color: #E9859A; } /* Pink title for front of interactive card */
+.card-back {
+    background-color: rgba(50, 71, 92); 
+    color: #D0E0F0;
+    transform: rotateY(180deg);
+    overflow: hidden;
+}
+.card-back h4.font-heading { color: #E9859A; } /* Pink title for back of interactive card */
+.card-back ul { padding-left: 1.5rem; }
+
+
+/* === TABBED WORK EXPERIENCE STYLES === */
+#experience-nav button.experience-tab-button {
+    display: block; width: 100%; padding: 0.85rem 1rem; text-align: left;
+    font-family: 'Josefin Sans', sans-serif; font-weight: 600; font-size: 1rem;
+    color: #A8B2D1; /* Light Slate - inactive tab text */
+    background-color: transparent; border: none;
+    border-left: 4px solid transparent; 
+    transition: background-color 0.2s ease, color 0.2s ease, border-left-color 0.2s ease;
+    cursor: pointer;
+}
+#experience-nav button.experience-tab-button:hover {
+    background-color: rgba(118, 215, 196, 0.1); /* Faint Teal background */
+    color: #76D7C4; /* Teal text */
+    border-left-color: rgba(118, 215, 196, 0.5); /* Teal border (subtle) */
+}
+#experience-nav button.experience-tab-button.active-tab {
+    color: #76D7C4; /* Teal for active tab text */
+    font-weight: 700;
+    background-color: rgba(118, 215, 196, 0.07); 
+    border-left-color: #76D7C4; /* Teal active indicator line */
+}
+#experience-details-container {
+    border-left-width: 2px; 
+    border-color: rgba(118, 215, 196, 0.2); /* Softer teal for the persistent line */
+}
+.experience-detail-content {
+    background-color: transparent; border: none; box-shadow: none;
+    padding: 0; display: none; 
+}
+.experience-detail-content.active-detail {
+    display: block;
+    background-color: rgba(42, 59, 77, 0.7); 
+    border: 1px solid rgba(118, 215, 196, 0.3); /* Teal border */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(118, 215, 196, 0.1) inset;
+    padding: 1.5rem; border-radius: 12px;
+}
+.experience-detail-content h3.font-heading { color: #E9859A; } /* Pink title for experience details */
 
 
 /* === BUTTONS === */
 .btn {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800; /* Extra bold Nunito */
-    padding: 0.8rem 2.2rem;
-    border-radius: 50px; /* Pill shape */
-    transition: all 0.3s ease;
-    letter-spacing: 0.8px;
-    display: inline-block;
-    border: 2px solid transparent;
-    text-transform: capitalize;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-family: 'Nunito', sans-serif; font-weight: 800; padding: 0.8rem 2.2rem;
+    border-radius: 50px; transition: all 0.3s ease; letter-spacing: 0.8px;
+    display: inline-block; border: 2px solid transparent; text-transform: capitalize;
+    position: relative; overflow: hidden;
 }
 .btn-primary { /* Pink Button */
-    background-color: #E9859A; /* Soft Rose Pink */
-    color: #FFFFFF; /* White text */
-    border-color: #e06c85; /* Slightly darker pink border */
+    background-color: #E9859A; color: #FFFFFF; border-color: #e06c85;
+    box-shadow: 0 0 15px rgba(233, 133, 154, 0.5), 0 0 10px rgba(255, 255, 255, 0.2) inset;
 }
 .btn-primary:hover {
-    background-color: #e06c85; /* Darker Rose Pink */
-    border-color: #d15a73;
+    background-color: #e06c85; border-color: #d15a73;
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 6px 12px rgba(233, 133, 154, 0.4);
+    box-shadow: 0 0 25px rgba(233, 133, 154, 0.7), 0 0 15px rgba(255, 255, 255, 0.3) inset;
 }
 .btn-secondary { /* Yellow Button */
-    background-color: #F9DB7E; /* Soft Sunflower Yellow */
-    color: #5F7A9D; /* Medium Muted Blue text for contrast */
-    border-color: #f7ce68; /* Slightly darker yellow border */
+    background-color: transparent; color: #F9DB7E; border: 2px solid #F9DB7E; 
+    box-shadow: 0 0 10px rgba(249, 219, 126, 0.3);
 }
 .btn-secondary:hover {
-    background-color: #f7ce68; /* Darker Sunflower Yellow */
-    border-color: #f5c34f;
-    color: #4A6482; /* Darker blue for text */
+    background-color: rgba(249, 219, 126, 0.15); color: #f7ce68; border-color: #f7ce68;
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 6px 12px rgba(249, 219, 126, 0.4);
+    box-shadow: 0 0 20px rgba(249, 219, 126, 0.5);
 }
 
 /* === FOOTER === */
 footer {
-    background-color: #5F7A9D; /* Medium Muted Blue */
-    color: #E6F0FA; /* Very Light Soft Blue text */
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    border-top: 1px solid rgba(230, 240, 250, 0.3); /* Lighter blue border, subtle */
+    background-color: #0F172A; /* Very Dark Slate Blue - Darker than body */
+    color: #D0E0F0; /* Light Blue/Silver text */
+    padding-top: 3rem; padding-bottom: 3rem;
+    border-top: 1px solid rgba(233, 133, 154, 0.2); /* Pink, very subtle border */
 }
-/* Footer heading ("Your Name") uses .font-heading (Bagel Fat One) */
-footer .font-heading {
-    color: #E6F0FA; /* Very Light Soft Blue for footer heading */
-    font-size: 1.5rem;
-    line-height: 1.2;
+footer .font-heading { /* Copyright "Ashley Chan" */
+    color: #F9DB7E; /* Accent Yellow for footer text highlight */
+    font-size: 1.5rem; line-height: 1.2;
 }
-footer .fa-star { /* Changed icon to star */
-    color: #F9DB7E !important; /* Soft Sunflower Yellow */
-    text-shadow: 0 0 5px rgba(249, 219, 126, 0.7);
+footer .fa-star { 
+    color: #76D7C4 !important; /* Accent Teal for footer icon */
+    text-shadow: 0 0 5px rgba(118, 215, 196, 0.7);
 }
-.ghibli-footer-image { /* If you add a small image here */
-    width: 60px;
-    height: auto;
-    opacity: 0.8;
-    margin: 1rem auto 0;
-}
+.ghibli-footer-image { width: 60px; height: auto; opacity: 0.8; margin: 1rem auto 0; }
 
-/* === UTILITY TEXT COLORS (used with Tailwind in HTML) === */
-.text-main-text { color: #334155; } /* Dark Slate Gray */
-.text-pink-highlight { color: #E9859A; } /* For tagline, avatar border */
-.text-yellow-accent { color: #F9DB7E; } /* For hero gradient */
-.text-green-accent-light { color: #A5D6A7; } /* For hero gradient (can be replaced with a blue) */
-/* New utility for blueish hero gradient if needed */
-.text-blue-accent-light { color: #A8CCEE; }
+/* === UTILITY TEXT COLORS === */
+.text-light-off-white { color: #F0F4F8; }
+.text-light-blue-silver { color: #D0E0F0; }
+.text-accent-pink { color: #E9859A; }
+.text-accent-yellow { color: #F9DB7E; }
+.text-accent-teal { color: #76D7C4; } 
+.text-haku-teal { color: #76D7C4; } /* Kept for compatibility if used in HTML */
+.text-dark-slate { color: #334155; }
+.border-accent-pink { border-color: #E9859A; }
+.border-accent-yellow { border-color: #F9DB7E; }
+.border-accent-teal { border-color: #76D7C4; }
 
 
 /* Contact Form Message Placeholder */
-#formMessage {
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-#formMessage.success {
-    color: #5F7A9D; /* Medium Muted Blue for success */
-}
-#formMessage.error {
-    color: #c53030; /* Red for error */
-}
+#formMessage { font-size: 0.9rem; font-weight: 600; }
+#formMessage.success { color: #76D7C4; } /* Teal for success */
+#formMessage.error { color: #e74c3c; } /* Red for error */
+

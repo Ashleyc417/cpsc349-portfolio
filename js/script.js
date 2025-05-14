@@ -2,33 +2,41 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // --- Mobile Menu Functionality ---
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileNavLinksForClose = document.querySelectorAll('#mobile-menu a.mobile-nav-link');
+    const mobileMenuButton = document.getElementById('mobile-menu-button'); // The hamburger icon button
+    const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button'); // The 'X' button inside the mobile menu
+    const mobileMenu = document.getElementById('mobile-menu'); // The mobile menu itself
+    const mobileNavLinksForClose = document.querySelectorAll('#mobile-menu a.mobile-nav-link'); // All navigation links within the mobile menu
 
+    // Function to open the mobile menu
     function openMobileMenu() {
         if (mobileMenu) {
-            mobileMenu.classList.remove('mobile-menu-closed');
-            mobileMenu.classList.add('mobile-menu-open');
-            document.body.style.overflow = 'hidden';
+            mobileMenu.classList.remove('mobile-menu-closed'); // Class that hides the menu
+            mobileMenu.classList.add('mobile-menu-open');   // Class that shows the menu
+            document.body.style.overflow = 'hidden'; // Prevent scrolling of the page when menu is open
         }
     }
 
+    // Function to close the mobile menu
     function closeMobileMenu() {
         if (mobileMenu) {
             mobileMenu.classList.remove('mobile-menu-open');
             mobileMenu.classList.add('mobile-menu-closed');
-            document.body.style.overflow = '';
+            document.body.style.overflow = ''; // Restore scrolling of the page
         }
     }
 
+    // Event listener for the mobile menu open button (hamburger)
     if (mobileMenuButton) {
         mobileMenuButton.addEventListener('click', openMobileMenu);
     }
+
+    // Event listener for the mobile menu close button (the 'X')
     if (mobileMenuCloseButton) {
         mobileMenuCloseButton.addEventListener('click', closeMobileMenu);
     }
+
+    // Event listeners for each link in the mobile menu
+    // This ensures the menu closes when a user taps on a navigation link
     if (mobileNavLinksForClose) {
         mobileNavLinksForClose.forEach(link => {
             link.addEventListener('click', closeMobileMenu);
@@ -43,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- Active Navigation Link Highlighting ---
     const desktopNavLinks = document.querySelectorAll('header nav > div.hidden a.nav-link');
-    const mobileNavLinksJS = document.querySelectorAll('#mobile-menu a.mobile-nav-link');
+    const mobileNavLinksJS = document.querySelectorAll('#mobile-menu a.mobile-nav-link'); 
     const allNavLinks = [...desktopNavLinks, ...mobileNavLinksJS];
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
@@ -52,12 +60,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const linkPage = (linkFileName === "" || linkFileName === null) ? "index.html" : linkFileName;
         link.classList.remove('nav-link-active', 'font-bold');
         if (link.classList.contains('mobile-nav-link')) {
-            link.style.color = '';
+            // Reset specific mobile active styles if any were applied directly by JS,
+            // though CSS should primarily handle active states.
+            // Example: link.style.color = ''; // Or remove a specific class
         }
         if (linkPage === currentPage) {
             link.classList.add('nav-link-active');
             if (link.classList.contains('mobile-nav-link')) {
-                link.classList.add('font-bold');
+                link.classList.add('font-bold'); // Example: make active mobile link bold
             }
         }
     });
@@ -76,122 +86,94 @@ document.addEventListener('DOMContentLoaded', function () {
         sectionObserver.observe(section);
     });
 
-    // --- Contact Form Handling with Formspree AJAX ---
+    // --- Contact Form Handling for Discord Webhook via Serverless Function ---
     const contactForm = document.getElementById('contactForm');
     const formMessage = document.getElementById('formMessage');
 
     if (contactForm && formMessage) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(contactForm);
-            const formAction = contactForm.getAttribute('action');
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default HTML form submission
+
             const nameInput = contactForm.querySelector('#name');
             const emailInput = contactForm.querySelector('#email');
+            const subjectInput = contactForm.querySelector('#subject');
             const messageInput = contactForm.querySelector('#message');
-            let isValid = true;
-            let feedbackMessage = "";
 
-            if (!nameInput || nameInput.value.trim() === "") {
-                isValid = false;
-                feedbackMessage = "Please enter your name.";
-            } else if (!emailInput || emailInput.value.trim() === "" || !emailInput.value.includes('@')) {
-                isValid = false;
-                feedbackMessage = "Please enter a valid email address.";
-            } else if (!messageInput || messageInput.value.trim() === "") {
-                isValid = false;
-                feedbackMessage = "Please enter your message.";
+            // Basic validation
+            if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+                formMessage.textContent = "Please fill out all required fields (Name, Email, Message).";
+                formMessage.className = 'mt-4 text-center error'; // Ensure 'error' class is styled in CSS
+                return;
             }
-
-            if (!isValid) {
-                formMessage.textContent = feedbackMessage;
+            if (!emailInput.value.includes('@')) { // Simple email format check
+                formMessage.textContent = "Please enter a valid email address.";
                 formMessage.className = 'mt-4 text-center error';
                 return;
             }
 
-            formMessage.textContent = "Sending...";
-            formMessage.className = 'mt-4 text-center';
+            const formData = {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                subject: subjectInput.value.trim() || "New Portfolio Contact", // Default subject if empty
+                message: messageInput.value.trim()
+            };
 
-            fetch(formAction, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    formMessage.textContent = "Thank you! Your message has been sent.";
-                    formMessage.className = 'mt-4 text-center success';
-                    contactForm.reset();
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            formMessage.textContent = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            formMessage.textContent = "Oops! There was a problem sending your message.";
-                        }
-                        formMessage.className = 'mt-4 text-center error';
-                    }).catch(error => {
-                        formMessage.textContent = "Oops! There was a problem sending your message. (Error parsing response)";
-                        formMessage.className = 'mt-4 text-center error';
-                    });
-                }
-            }).catch(error => {
-                formMessage.textContent = "Oops! There was a problem sending your message. Please try again.";
-                formMessage.className = 'mt-4 text-center error';
-            });
+            formMessage.textContent = "Opening your email client...";
+            setTimeout(() => {
+                formMessage.textContent = ""; // Clear message after 1 second
+            }, 2000)
+            formMessage.className = 'mt-4 text-center'; // Neutral message styling
+
+            const subject = encodeURIComponent(formData.subject);
+            const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`);
+
+            window.location.href = `mailto:${formData.email}?subject=${subject}&body=${body}`;
         });
     }
 
     // --- Interactive Card Rotation (for Leadership section) ---
-    const interactiveCards = document.querySelectorAll('.interactive-card'); // This will still apply to leadership cards
+    const interactiveCards = document.querySelectorAll('.interactive-card');
     interactiveCards.forEach(card => {
         card.addEventListener('click', function() {
-            // Only flip if it's not part of the new experience tabs
             if (!this.closest('.experience-tabs-container')) {
                  this.classList.toggle('is-flipped');
             }
         });
     });
 
-    // --- Tabbed Work Experience Functionality ---
+    // --- Tabbed Work Experience Functionality (Hover) ---
     const experienceNavButtons = document.querySelectorAll('#experience-nav .experience-tab-button');
     const experienceDetailContents = document.querySelectorAll('#experience-details-container .experience-detail-content');
+    // let activeExperienceTab = null; // Not strictly needed if we always reset
+
+    function showExperienceDetail(targetId) {
+        experienceDetailContents.forEach(content => {
+            content.style.display = 'none';
+            content.classList.remove('active-detail');
+        });
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+            targetContent.style.display = 'block';
+            targetContent.classList.add('active-detail');
+            // activeExperienceTab = targetContent; // Not strictly needed
+        }
+    }
 
     if (experienceNavButtons.length > 0 && experienceDetailContents.length > 0) {
         experienceNavButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active state from all buttons
+            button.addEventListener('mouseenter', function() { 
                 experienceNavButtons.forEach(btn => btn.classList.remove('active-tab'));
-                // Add active state to clicked button
                 this.classList.add('active-tab');
-
                 const targetId = this.getAttribute('data-target');
-
-                // Hide all detail content
-                experienceDetailContents.forEach(content => {
-                    content.style.display = 'none'; // Hide by setting display to none
-                    content.classList.remove('active-detail'); // Remove active class if used for styling visibility
-                });
-
-                // Show target detail content
-                const targetContent = document.getElementById(targetId);
-                if (targetContent) {
-                    targetContent.style.display = 'block'; // Show by setting display to block
-                    targetContent.classList.add('active-detail'); // Add active class
-                }
+                showExperienceDetail(targetId);
             });
         });
-
-        // Optional: Ensure the first tab is active on page load
+        // Ensure the first tab is active on page load
         if (experienceNavButtons[0]) {
             experienceNavButtons[0].classList.add('active-tab');
+            const firstTargetId = experienceNavButtons[0].getAttribute('data-target');
+            showExperienceDetail(firstTargetId);
         }
-        experienceDetailContents.forEach((content, index) => {
-            if (index === 0) {
-                content.style.display = 'block';
-                content.classList.add('active-detail');
-            } else {
-                content.style.display = 'none';
-            }
-        });
     }
 
 }); // End of DOMContentLoaded
